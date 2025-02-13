@@ -8,7 +8,7 @@ const routes = Router();
 
 routes.use(homeController);
 
-routes.use(movieController);
+routes.use('/movies', movieController);
 
 
 routes.get('*', (req, res) => { 
