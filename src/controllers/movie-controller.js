@@ -1,10 +1,17 @@
 import { Router } from 'express';
 
-const router = Router();
+import movies from '../movies.js';
 
-router.get('/create', (req, res) => { 
+
+const movieController = Router();
+
+movieController.get('/create', (req, res) => { 
     res.render('create');
 
 });
 
-export default router;
+movieController.get('/:movieId/details', (req, res) => { 
+    res.render('details', { movies })
+})
+
+export default movieController;
