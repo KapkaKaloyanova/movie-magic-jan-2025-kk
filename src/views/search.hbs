@@ -1,10 +1,10 @@
 
             <section id="search">
                 <h1>Search</h1>
-                <form action="" method="" class="form">
+                <form action="/movies/search" method="GET" class="form">
                     <input type="text" class="search" name="search" placeholder="Title...">
-                    <input type="text" name="" class="genre" placeholder="Genre...">
-                    <input type="number" name="" class="year" placeholder="Year...">
+                    <input type="text" name="genre" class="genre" placeholder="Genre...">
+                    <input type="number" name="year" class="year" placeholder="Year...">
                     <input type="submit" value="search">
                 </form>
             </section>
@@ -12,15 +12,8 @@
             <section id="catalog">
                 <div class="band">
 
-                    <!-- If there are posts for movie in the database display each of them -->
-                    {{#each movies}}
-                        {{>movie}}
-                    {{else}}
-                    <!-- If there are no posts matched display: -->
-                        <div class="no-posts">
-                            <p class="no-offer">There are no movies matched...</p>
-                        </div>
-                    {{/each}}
+                        {{>movie-list}}
+                  
 
 
                 </div>
