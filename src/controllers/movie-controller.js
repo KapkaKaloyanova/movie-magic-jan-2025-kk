@@ -3,7 +3,7 @@ import movieService from '../services/movie-service.js';
 
 const movieController = Router();
 
-movieController.get('/search', async (req, res) => { 
+movieController.get('/search', async (req, res) => {
     // console.log(req.query); 
     // console.log(req.body); 
     // console.log(req.params); 
@@ -14,7 +14,7 @@ movieController.get('/search', async (req, res) => {
 
 });
 
-movieController.get('/create', (req, res) => { 
+movieController.get('/create', (req, res) => {
     res.render('create');
 });
 
@@ -23,10 +23,10 @@ movieController.post('/create', async (req, res) => {
 
     await movieService.create(newMovie);
 
-    res.redirect('/');   
+    res.redirect('/');
 });
 
-movieController.get('/:movieId/details', async (req, res) => { 
+movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     //get movie data for movieId
     const movie = await movieService.getOne(movieId);
@@ -34,8 +34,11 @@ movieController.get('/:movieId/details', async (req, res) => {
     res.render('movie/details', { movie })
 });
 
-movieController.get('/:movieId/attach-cast', (req, res) => { 
-    res.render('movie/attach-cast');
+movieController.get('/:movieId/attach-cast', async (req, res) => {
+    const movieId = req.params.movieId;
+    const movie = await movieService.getOne(movieId);
+
+    res.render('movie/attach-cast', { movie });
 });
 
 export default movieController;
