@@ -1,32 +1,33 @@
-import { v4 as uuid } from 'uuid';
-
 import Movie from '../models/Movie.js';
 
 export default {
     getAll(filter = {}) {
-        let result = Movie.find({});
+        let query = Movie.find({});
 
- /*        if (filter.search){
-            result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
+        if (filter.search){
+            // TODO: fix partial case insensitive search
+            // find() or where()
+            query = query.where({title: filter.search});
         };
 
         if (filter.genre){
-            result = result.filter(movie => movie.genre.toLowerCase() === filter.genre.toLowerCase());
+            // TODO: add case insensitive search
+            query = query.where({genre: filter.genre});
         };
 
         if (filter.year){
-            result = result.filter(movie => movie.year === filter.year);
+            query = query.where({year: Number(filter.year)});
         };
- */
-        return result;
+
+        return query;
     },
 
     getOne(movieId) {
         //TODO: if movie is missing?
 
-        const result = Movie.findById(movieId);
+        const query = Movie.findById(movieId);
 
-        return result;
+        return query;
     },
 
     create(movieData) {
