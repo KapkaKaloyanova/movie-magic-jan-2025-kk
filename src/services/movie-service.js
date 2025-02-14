@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
-import movies from '../movies.js';
+import Movie from '../models/Movie.js';
 
 export default {
     getAll(filter = {}) {
-        let result = movies;
+        let result = Movie.find({});
 
-        if (filter.search){
+ /*        if (filter.search){
             result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
         };
 
@@ -17,14 +17,14 @@ export default {
         if (filter.year){
             result = result.filter(movie => movie.year === filter.year);
         };
-
+ */
         return result;
     },
 
-    findOne(movieId) {
+    getOne(movieId) {
         //TODO: if movie is missing?
 
-        const result = movies.find(movie => movie.id === movieId);
+        const result = Movie.findById(movieId);
 
         return result;
     },
@@ -32,7 +32,7 @@ export default {
     create(movieData) {
         const newId = uuid();
 
-        movies.push({
+        Movie.push({
             id: newId,
             ...movieData,
             rating: Number(movieData.rating),
