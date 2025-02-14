@@ -1,18 +1,19 @@
-import { Schema, model }  from 'mongoose'
+import { Schema, model, Types } from 'mongoose';
 
- // create Schema
+// Create Schema
 const movieSchema = new Schema({
     title: String,
     category: String,
     genre: String,
     director: String,
     year: Number,
-    imageURL: String,
+    imageUrl: String,
     rating: Number,
     description: String,
 });
 
- // create model
- const Movie = model('Model', movieSchema);
+ // Create model
+ const Movie = model('Movie', movieSchema);
 
+ // Export model
  export default Movie;
