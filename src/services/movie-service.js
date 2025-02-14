@@ -23,11 +23,13 @@ export default {
     },
 
     getOne(movieId) {
-        //TODO: if movie is missing?
-
         const query = Movie.findById(movieId);
 
         return query;
+    },
+
+    getOneWithCasts(movieId) {
+        return this.getOne(movieId).populate('casts');
     },
 
     create(movieData) {

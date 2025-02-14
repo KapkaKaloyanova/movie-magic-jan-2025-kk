@@ -30,8 +30,8 @@ movieController.post('/create', async (req, res) => {
 movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     //get movie data for movieId
-    const movie = await movieService.getOne(movieId);
-    movie.rating
+    const movie = await movieService.getOneWithCasts(movieId);
+    // const casts = await castService.getAll(movie.casts);
     res.render('movie/details', { movie })
 });
 
