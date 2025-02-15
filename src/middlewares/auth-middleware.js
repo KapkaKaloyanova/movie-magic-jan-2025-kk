@@ -22,5 +22,7 @@
 
     } catch (err) {
         // TODO: invalid token
+        res.clearCookie('auth');
+        res.redirect('/auth/login');
     }
  };
