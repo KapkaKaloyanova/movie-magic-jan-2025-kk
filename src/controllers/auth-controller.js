@@ -7,5 +7,14 @@ authController.get('/register', (req, res) => {
     
 });
 
+authController.post('/register', async (req, res) => { 
+    const userData = req.body;
+
+    console.log(userData);
+
+
+    res.end();
+
+})
 
 export default authController;
