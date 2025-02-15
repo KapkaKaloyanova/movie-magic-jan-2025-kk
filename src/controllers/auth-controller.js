@@ -3,7 +3,7 @@ import { Router } from "express";
 const authController = new Router();
 
 authController.get('/register', (req, res) => { 
-    res.render('register');
+    res.render('auth/register');
     
 });
 
