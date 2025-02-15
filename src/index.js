@@ -5,14 +5,15 @@ import mongoose from 'mongoose';
 
 import routes from './routes.js';
 import showRatingHelper from './helpers/rating-helper.js';
+import 'dotenv/config.js'
 
 const app = express();
 
 // db configuration
-const uri = 'mongodb://localhost:27017/movie-magic-jan-2025-kk';
-
 try {
-    await mongoose.connect(uri);
+    const defaultUri = 'mongodb://localhost:27017/movie-magic-jan-2025-kk'
+    await mongoose.connect(process.env.DATABASE_URI ?? defaultUri
+);
     console.log(`Connected to DB successfully!`);
 } catch (error) {
     console.error(`Cannot connect to DB!`);
