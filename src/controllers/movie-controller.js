@@ -28,6 +28,8 @@ movieController.post('/create', async (req, res) => {
 });
 
 movieController.get('/:movieId/details', async (req, res) => {
+    console.log(req.user);
+
     const movieId = req.params.movieId;
     //get movie data for movieId
     const movie = await movieService.getOneWithCasts(movieId);
